@@ -1,6 +1,10 @@
 package com.krendel.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,6 +15,9 @@ import java.io.Serializable;
         @AttributeOverride(name = "id", column = @Column(name = "grant_id"))
 })
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class Grant extends BaseModel implements Serializable {
 
     private static final long serialVersionUID = 4192997147639777673L;
@@ -22,29 +29,4 @@ public class Grant extends BaseModel implements Serializable {
     @Column(name = "grant_key")
     private String grantKey;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getGrantKey() {
-        return grantKey;
-    }
-
-    public void setGrantKey(String grantKey) {
-        this.grantKey = grantKey;
-    }
-
-    @Override
-    public long getId() {
-        return super.getId();
-    }
-
-    @Override
-    public void setId(long id) {
-        super.setId(id);
-    }
 }
